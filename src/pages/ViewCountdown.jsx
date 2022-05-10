@@ -13,10 +13,6 @@ const ViewCountdown = () => {
 
 	const date = new Date(year, month, day, hour, minute, second, 0);
 
-	console.log('date', date);
-	console.log('month', month);
-	console.log('day', day);
-
 	return <main>{<Countdown date={date} />}</main>;
 };
 
