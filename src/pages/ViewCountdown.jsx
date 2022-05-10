@@ -1,5 +1,5 @@
 const ViewCountdown = () => {
-	return null;
+	return <div>ViewCountdown</div>;
 };
 
 export default ViewCountdown;

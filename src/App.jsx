@@ -7,7 +7,7 @@ const App = () => {
 		<BrowserRouter>
 			<Routes>
 				<Route path='/' element={<ViewCountdown />} />
-				<Route path='create' element={<CreateCountdown />} />
+				<Route path='/create' element={<CreateCountdown />} />
 			</Routes>
 		</BrowserRouter>
 	);

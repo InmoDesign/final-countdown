@@ -1,5 +1,5 @@
 const CreateCountdown = () => {
-	return null;
+	return <div>Create Countdown</div>;
 };
 
 export default CreateCountdown;
