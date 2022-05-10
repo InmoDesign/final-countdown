@@ -4,7 +4,7 @@ const Footer = () => {
 	return (
 		<footer>
 			© Copyright{' '}
-			<a href='https://isabellatech.com' targer='_blank'>
+			<a href='https://isabellatech.com' rel='noreferrer' target='_blank'>
 				Isabella Tech
 			</a>{' '}
 			{currentYear}
