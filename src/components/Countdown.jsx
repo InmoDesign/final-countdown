@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import calculateTimeLeft from '../helpers/calculateTimeLeft';
+import PrintCountdown from './PrintCountdown';
 
 const Countdown = ({ date }) => {
 	const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(date));
@@ -11,18 +12,9 @@ const Countdown = ({ date }) => {
 		return () => clearTimeout(timer);
 	});
 
-	const { days, hours, minutes, seconds, valid } = timeLeft;
-
 	return (
 		<div>
-			{(valid && (
-				<div>
-					{days > 0 && <span>{days} dias - </span>}{' '}
-					<span>{hours} horas - </span>
-					<span>{minutes} minutos - </span> <span>{seconds} segundos </span>
-				</div>
-			)) ||
-				'TIME IS DONE!'}
+			<PrintCountdown {...timeLeft} />
 		</div>
 	);
 };
