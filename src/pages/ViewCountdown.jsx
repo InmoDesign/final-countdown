@@ -6,12 +6,18 @@ const ViewCountdown = () => {
 	const [searchParams] = useSearchParams();
 
 	const userDate = {
-		year: parseInt(searchParams.get('year')) || false,
-		month: parseInt(searchParams.get('month')) || false,
-		day: parseInt(searchParams.get('day')) || false,
-		hour: parseInt(searchParams.get('hour')) || false,
-		minute: parseInt(searchParams.get('minute')) || false,
-		second: parseInt(searchParams.get('second')) || false
+		year: searchParams.has('year') ? parseInt(searchParams.get('year')) : null,
+		month: searchParams.has('month')
+			? parseInt(searchParams.get('month'))
+			: null,
+		day: searchParams.has('day') ? parseInt(searchParams.get('day')) : null,
+		hour: searchParams.has('hour') ? parseInt(searchParams.get('hour')) : null,
+		minute: searchParams.has('minute')
+			? parseInt(searchParams.get('minute'))
+			: null,
+		second: searchParams.has('second')
+			? parseInt(searchParams.get('second'))
+			: null
 	};
 
 	const date = calculateTime(userDate);
