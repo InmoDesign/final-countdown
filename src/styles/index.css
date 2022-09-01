@@ -1,20 +1,18 @@
 @import './resets.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 html {
-	background-color: #1d3850;
+	background-color: #f9fafb;
 }
 
-div.countdown {
-	width: fit-content;
-	margin: 2rem auto;
-	padding: 2rem;
-	background-color: #3478a2;
-	color: #93d4fc;
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
 }
 
-div.countdown span {
-	display: inline-block;
-	margin-right: 4px;
-	font-size: 1.2rem;
-	color: #fff;
+input[type='number'] {
+	-moz-appearance: textfield;
 }

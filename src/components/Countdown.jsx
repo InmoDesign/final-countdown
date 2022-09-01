@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import calculateTimeLeft from '../helpers/calculateTimeLeft';
 import PrintCountdown from './PrintCountdown';
 
-const Countdown = ({ date }) => {
+const Countdown = ({ params, date }) => {
 	const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(date));
 
 	useEffect(() => {
@@ -14,7 +14,7 @@ const Countdown = ({ date }) => {
 
 	return (
 		<div>
-			<PrintCountdown {...timeLeft} />
+			<PrintCountdown {...params} {...timeLeft} />
 		</div>
 	);
 };

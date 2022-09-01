@@ -1,6 +1,7 @@
 import { useSearchParams } from 'react-router-dom';
 import Countdown from '../components/Countdown';
 import calculateTime from '../helpers/calculateTime';
+import themes from '../themes';
 
 const ViewCountdown = () => {
 	const [searchParams] = useSearchParams();
@@ -8,7 +9,7 @@ const ViewCountdown = () => {
 	const userDate = {
 		year: searchParams.has('year') ? parseInt(searchParams.get('year')) : null,
 		month: searchParams.has('month')
-			? parseInt(searchParams.get('month'))
+			? parseInt(searchParams.get('month')) - 1
 			: null,
 		day: searchParams.has('day') ? parseInt(searchParams.get('day')) : null,
 		hour: searchParams.has('hour') ? parseInt(searchParams.get('hour')) : null,
@@ -20,11 +21,17 @@ const ViewCountdown = () => {
 			: null
 	};
 
+	const params = {
+		fontSize: searchParams.has('fontsize')
+			? parseInt(searchParams.get('fontsize'))
+			: null,
+		theme: themes[searchParams.get('theme') || 'light'],
+		msg: searchParams.get('msg')
+	};
+
 	const date = calculateTime(userDate);
 
-	console.log('date', date);
-	console.log('userdate', userDate);
-	return <main>{<Countdown date={date} />}</main>;
+	return <main>{<Countdown params={params} date={date} />}</main>;
 };
 
 export default ViewCountdown;

@@ -1,0 +1,66 @@
+[
+	{
+		"name": "second_one",
+		"en": "Second",
+		"es": "Segundo"
+	},
+	{
+		"name": "second_other",
+		"en": "Seconds",
+		"es": "Segundos"
+	},
+	{
+		"name": "minute_one",
+		"en": "Minute",
+		"es": "Minuto"
+	},
+	{
+		"name": "minute_other",
+		"en": "Minutes",
+		"es": "Minutos"
+	},
+	{
+		"name": "hour_one",
+		"en": "Hour",
+		"es": "Hora"
+	},
+	{
+		"name": "hour_other",
+		"en": "Hours",
+		"es": "Horas"
+	},
+	{
+		"name": "day_one",
+		"en": "Day",
+		"es": "Día"
+	},
+	{
+		"name": "day_other",
+		"en": "Days",
+		"es": "Días"
+	},
+	{
+		"name": "month_one",
+		"en": "Month",
+		"es": "Mes"
+	},
+	{
+		"name": "month_other",
+		"en": "Months",
+		"es": "Meses"
+	},
+	{
+		"name": "year_one",
+		"en": "Year",
+		"es": "Año"
+	},
+	{
+		"name": "year_other",
+		"en": "Years",
+		"es": "Años"
+	},
+	{
+		"en": "Time is done",
+		"es": "Ha acabado el tiempo"
+	}
+]
