@@ -5,9 +5,11 @@ import Header from '../components/Header';
 const Page = () => {
 	return (
 		<>
-			<Header />
-			<Outlet />
-			<Footer />
+			<div className='flex flex-col justify-between min-h-screen'>
+				<Header />
+				<Outlet />
+				<Footer />
+			</div>
 		</>
 	);
 };

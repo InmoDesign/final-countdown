@@ -37,7 +37,7 @@ const Header = () => {
 							</g>
 						</g>
 					</svg>{' '}
-					Final Countdown
+					Timer Frame
 				</Link>
 				<nav className='flex gap-4 text-gray-200'>
 					<Link to='/' targer='_blank'>

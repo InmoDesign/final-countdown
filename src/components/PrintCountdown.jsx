@@ -16,7 +16,7 @@ const PrintCountdown = ({
 
 	return (
 		<div
-			className='h-screen p-6 flex justify-center items-center lowercase'
+			className='h-screen p-6 flex justify-center items-center'
 			style={{
 				fontSize: `${fontSize || 24}px`,
 				backgroundColor: theme.bg,
@@ -40,7 +40,7 @@ const PrintCountdown = ({
 						<span>{`${seconds} ${t('second', { count: seconds })}`}</span>
 					</>
 				)) || (
-					<span className='uppercase'>
+					<span className=''>
 						{(msg && sanitize(msg)) || t('Time is done')}
 					</span>
 				)}
