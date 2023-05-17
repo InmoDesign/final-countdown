@@ -1,9 +1,11 @@
 import { ClipboardIcon } from '@heroicons/react/24/outline';
 import { useRef } from 'react';
+import DateField from '../components/DateField';
 import InputArea from '../components/InputArea';
 import InputField from '../components/InputField';
 import InputSelector from '../components/InputSelector';
 import Tab from '../components/Tab';
+import TimeField from '../components/TimeField';
 import useTimerLink from '../hooks/useTimerLink';
 
 const CreateCountdown = () => {
@@ -16,7 +18,7 @@ const CreateCountdown = () => {
 		theme,
 		fontSize,
 		msg,
-		time: { second, minute, hour, day, month, year }
+		time: { date, time, second, minute, hour, day, month, year }
 	} = params;
 
 	const copyAlert = useRef();
@@ -44,6 +46,31 @@ const CreateCountdown = () => {
 									title: 'Time',
 									content: (
 										<>
+											<DateField
+												label='Date'
+												name='date'
+												value={date}
+												onChange={inputTimeChange}
+											/>
+											<TimeField
+												label='Time'
+												name='time'
+												value={time}
+												onChange={inputTimeChange}
+											/>
+										</>
+									)
+								},
+								{
+									id: 'advanced',
+									title: 'Advanced',
+									content: (
+										<>
+											<p className='mb-4'>
+												Define the time and date of repetition. For example:
+												Every 14th hour of May, just define the 14th hour and
+												the month 5.
+											</p>
 											<InputField
 												label='Second'
 												name='second'

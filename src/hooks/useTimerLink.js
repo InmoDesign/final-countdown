@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 import { useCallback, useEffect, useState } from 'react';
 
 const useTimerLink = (baseurl = '') => {
@@ -53,7 +54,22 @@ const useTimerLink = (baseurl = '') => {
 		for (const key in data.params.time) {
 			const element = data.params.time[key];
 			if (element) {
-				query.push(`${key}=${element}`);
+				switch (key) {
+					case 'date':
+						const dateTime = new Date(element);
+						query.push(
+							`${key}=${dateTime.getFullYear()}-${(dateTime.getMonth() + 1)
+								.toString()
+								.padStart(2, '0')}-${dateTime
+								.getDate()
+								.toString()
+								.padStart(2, '0')}`
+						);
+						break;
+					default:
+						query.push(`${key}=${element}`);
+						break;
+				}
 			}
 		}
 
