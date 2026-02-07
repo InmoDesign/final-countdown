@@ -5,7 +5,7 @@ const useTimerLink = (baseurl = '') => {
 		link: baseurl,
 		params: {
 			lang: 'en',
-			theme: 'light',
+			theme: 'dark',
 			fontSize: '24',
 			msg: '',
 			time: {
@@ -41,7 +41,7 @@ const useTimerLink = (baseurl = '') => {
 		if (data.params.lang && data.params.lang !== 'en') {
 			query.push(`lang=${encodeURIComponent(data.params.lang)}`);
 		}
-		if (data.params.theme && data.params.theme !== 'light') {
+		if (data.params.theme && data.params.theme !== 'dark') {
 			query.push(`theme=${encodeURIComponent(data.params.theme)}`);
 		}
 		if (data.params.fontSize && data.params.fontSize !== '24') {
