@@ -4,20 +4,20 @@ import en from './src/locales/en.json';
 import es from './src/locales/es.json';
 
 i18n.use(initReactI18next).init({
+	lng: 'en',
+	fallbackLng: 'en',
+	supportedLngs: ['en', 'es'],
+	returnEmptyString: false,
 	resources: {
 		en: {
 			translation: en
 		},
 		es: {
 			translation: es
-		},
-		lng: 'en',
-		fallbackLng: ['en'],
-		supportedLngs: ['en', 'es'],
-		returnEmptyString: false,
-		interpolation: {
-			escapeValue: false
 		}
+	},
+	interpolation: {
+		escapeValue: false
 	}
 });
 

@@ -11,9 +11,6 @@ const ViewCountdown = () => {
 		const time = getTime(searchParams.get('time'));
 		const date = getDate(searchParams.get('date'));
 
-		console.log('Time', time);
-		console.log('Date', date);
-
 		const response = {
 			year: date.year
 				? parseInt(date.year)
@@ -47,8 +44,6 @@ const ViewCountdown = () => {
 				: null
 		};
 
-		console.log('response', response);
-
 		return response;
 	};
 
@@ -56,7 +51,7 @@ const ViewCountdown = () => {
 		fontSize: searchParams.has('fontsize')
 			? parseInt(searchParams.get('fontsize'))
 			: null,
-		theme: themes[searchParams.get('theme') || 'light'],
+		theme: themes[searchParams.get('theme')] || themes.light,
 		msg: searchParams.get('msg')
 	};
 

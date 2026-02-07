@@ -1,11 +1,8 @@
 import { ClipboardIcon } from '@heroicons/react/24/outline';
-import { useRef } from 'react';
-import DateField from '../components/DateField';
-import InputArea from '../components/InputArea';
-import InputField from '../components/InputField';
+import FormField from '../components/FormField';
 import InputSelector from '../components/InputSelector';
 import Tab from '../components/Tab';
-import TimeField from '../components/TimeField';
+import useClipboard from '../hooks/useClipboard';
 import useTimerLink from '../hooks/useTimerLink';
 
 const CreateCountdown = () => {
@@ -21,15 +18,7 @@ const CreateCountdown = () => {
 		time: { date, time, second, minute, hour, day, month, year }
 	} = params;
 
-	const copyAlert = useRef();
-
-	const copy = () => {
-		navigator.clipboard.writeText(link);
-		copyAlert.current.classList.remove('hidden');
-		setTimeout(() => {
-			copyAlert.current.classList.add('hidden');
-		}, 2000);
-	};
+	const { copied, copy } = useClipboard();
 
 	return (
 		<div className='max-w-7xl w-full mx-auto my-16 px-4'>
@@ -46,15 +35,17 @@ const CreateCountdown = () => {
 									title: 'Time',
 									content: (
 										<>
-											<DateField
+											<FormField
 												label='Date'
 												name='date'
+												variant='date'
 												value={date}
 												onChange={inputTimeChange}
 											/>
-											<TimeField
+											<FormField
 												label='Time'
 												name='time'
+												variant='time'
 												value={time}
 												onChange={inputTimeChange}
 											/>
@@ -71,7 +62,7 @@ const CreateCountdown = () => {
 												Every 14th hour of May, just define the 14th hour and
 												the month 5.
 											</p>
-											<InputField
+											<FormField
 												label='Second'
 												name='second'
 												type='number'
@@ -80,7 +71,7 @@ const CreateCountdown = () => {
 												value={second}
 												onChange={inputTimeChange}
 											/>
-											<InputField
+											<FormField
 												label='Minute'
 												name='minute'
 												type='number'
@@ -89,7 +80,7 @@ const CreateCountdown = () => {
 												value={minute}
 												onChange={inputTimeChange}
 											/>
-											<InputField
+											<FormField
 												label='Hour'
 												name='hour'
 												type='number'
@@ -98,7 +89,7 @@ const CreateCountdown = () => {
 												value={hour}
 												onChange={inputTimeChange}
 											/>
-											<InputField
+											<FormField
 												label='Day'
 												name='day'
 												type='number'
@@ -107,7 +98,7 @@ const CreateCountdown = () => {
 												value={day}
 												onChange={inputTimeChange}
 											/>
-											<InputField
+											<FormField
 												label='Month'
 												name='month'
 												type='number'
@@ -116,7 +107,7 @@ const CreateCountdown = () => {
 												value={month}
 												onChange={inputTimeChange}
 											/>
-											<InputField
+											<FormField
 												label='Year'
 												name='year'
 												type='number'
@@ -152,7 +143,7 @@ const CreateCountdown = () => {
 													{ label: 'Dark', value: 'dark' }
 												]}
 											/>
-											<InputField
+											<FormField
 												label='Font size'
 												name='fontSize'
 												type='number'
@@ -162,10 +153,10 @@ const CreateCountdown = () => {
 												value={fontSize}
 												onChange={inputChange}
 											/>
-											<InputArea
+											<FormField
 												label='Final message'
 												name='msg'
-												type='text'
+												variant='textarea'
 												value={msg}
 												onChange={inputChange}
 											/>
@@ -179,13 +170,13 @@ const CreateCountdown = () => {
 				<div className='flex-1 w-full md:w-auto'>
 					<div className='relative p-5 overflow-hidden font-mono text-sm text-gray-200 bg-gray-800 rounded-md pr-14 mb-8'>
 						<span>{link}</span>
-						<span className='hidden px-1 text-emerald-400' ref={copyAlert}>
+						<span className={copied ? 'px-1 text-emerald-400' : 'hidden'}>
 							Copied!
 						</span>
 						<button
 							type='button'
 							className='absolute top-0 bottom-0 right-0 px-3 text-white bg-emerald-500'
-							onClick={copy}
+							onClick={() => copy(link)}
 						>
 							<ClipboardIcon className='w-6 h-6' />
 						</button>

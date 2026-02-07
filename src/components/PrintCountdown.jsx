@@ -40,9 +40,12 @@ const PrintCountdown = ({
 						<span>{`${seconds} ${t('second', { count: seconds })}`}</span>
 					</>
 				)) || (
-					<span className=''>
-						{(msg && sanitize(msg)) || t('Time is done')}
-					</span>
+					<span
+						style={{ color: theme.accent }}
+						dangerouslySetInnerHTML={{
+							__html: (msg && sanitize(msg)) || t('Time is done')
+						}}
+					/>
 				)}
 			</div>
 		</div>

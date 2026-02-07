@@ -1,46 +1,27 @@
-const Tab = ({ pages }) => {
-	const open = id => {
-		for (let i = 0; i < pages.length; i++) {
-			const page = document.getElementById(pages[i].id);
-			const button = document.getElementById(`${pages[i].id}_button`);
+import { useState } from 'react';
 
-			if (page) {
-				if (page.id === id) {
-					page.classList.remove('hidden');
-					if (button) {
-						button.classList.add('selected');
-					}
-				} else {
-					page.classList.add('hidden');
-					if (button) {
-						button.classList.remove('selected');
-					}
-				}
-			}
-		}
-	};
+const Tab = ({ pages }) => {
+	const [activeTab, setActiveTab] = useState(pages[0]?.id);
 
 	return (
 		<div className='w-full'>
 			<div className='flex items-center border-b'>
-				{pages.map((page, index) => (
+				{pages.map(page => (
 					<button
 						type='button'
-						className={`tab-button ${index > 0 ? '' : ' selected'}`}
-						id={`${page.id}_button`}
+						className={`tab-button${activeTab === page.id ? ' selected' : ''}`}
 						key={page.id}
-						onClick={() => open(page.id)}
+						onClick={() => setActiveTab(page.id)}
 					>
 						{page.title}
 					</button>
 				))}
 			</div>
 			<div className='pt-4'>
-				{pages.map((page, index) => (
+				{pages.map(page => (
 					<div
-						id={page.id}
-						className={index > 0 ? 'hidden' : undefined}
 						key={page.id}
+						className={activeTab !== page.id ? 'hidden' : undefined}
 					>
 						{page.content}
 					</div>

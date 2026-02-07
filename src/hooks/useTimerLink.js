@@ -1,4 +1,3 @@
-/* eslint-disable no-case-declarations */
 import { useCallback, useEffect, useState } from 'react';
 
 const useTimerLink = (baseurl = '') => {
@@ -40,35 +39,32 @@ const useTimerLink = (baseurl = '') => {
 	const buildURL = useCallback(() => {
 		const query = [];
 		if (data.params.lang && data.params.lang !== 'en') {
-			query.push(`lang=${data.params.lang}`);
+			query.push(`lang=${encodeURIComponent(data.params.lang)}`);
 		}
 		if (data.params.theme && data.params.theme !== 'light') {
-			query.push(`theme=${data.params.theme}`);
+			query.push(`theme=${encodeURIComponent(data.params.theme)}`);
 		}
 		if (data.params.fontSize && data.params.fontSize !== '24') {
-			query.push(`fontsize=${data.params.fontSize}`);
+			query.push(`fontsize=${encodeURIComponent(data.params.fontSize)}`);
 		}
 		if (data.params.msg) {
-			query.push(`msg=${data.params.msg}`);
+			query.push(`msg=${encodeURIComponent(data.params.msg)}`);
 		}
 		for (const key in data.params.time) {
 			const element = data.params.time[key];
 			if (element) {
-				switch (key) {
-					case 'date':
-						const dateTime = new Date(element);
-						query.push(
-							`${key}=${dateTime.getFullYear()}-${(dateTime.getMonth() + 1)
-								.toString()
-								.padStart(2, '0')}-${dateTime
-								.getDate()
-								.toString()
-								.padStart(2, '0')}`
-						);
-						break;
-					default:
-						query.push(`${key}=${element}`);
-						break;
+				if (key === 'date') {
+					const dateTime = new Date(element);
+					query.push(
+						`${key}=${dateTime.getFullYear()}-${(dateTime.getMonth() + 1)
+							.toString()
+							.padStart(2, '0')}-${dateTime
+							.getDate()
+							.toString()
+							.padStart(2, '0')}`
+					);
+				} else {
+					query.push(`${key}=${encodeURIComponent(element)}`);
 				}
 			}
 		}
@@ -80,7 +76,7 @@ const useTimerLink = (baseurl = '') => {
 
 	useEffect(() => {
 		setData(old => ({ ...old, link: buildURL() }));
-	}, [data.params, buildURL]);
+	}, [buildURL]);
 
 	return [data, inputChange, inputTimeChange];
 };

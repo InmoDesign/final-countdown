@@ -1,16 +1,8 @@
-import { useEffect, useState } from 'react';
-import calculateTimeLeft from '../helpers/calculateTimeLeft';
+import useCountdown from '../hooks/useCountdown';
 import PrintCountdown from './PrintCountdown';
 
 const Countdown = ({ params, date }) => {
-	const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(date));
-
-	useEffect(() => {
-		const timer = setTimeout(() => {
-			setTimeLeft(calculateTimeLeft(date));
-		}, 1000);
-		return () => clearTimeout(timer);
-	});
+	const timeLeft = useCountdown(date);
 
 	return (
 		<div>
