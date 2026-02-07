@@ -41,6 +41,8 @@ const App = () => {
 		const theme = query.get('theme');
 		if (allowedThemes.includes(theme)) {
 			app.current.classList.add(theme);
+		} else {
+			app.current.classList.add('dark');
 		}
 	}, []);
 

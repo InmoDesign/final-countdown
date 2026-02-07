@@ -30,12 +30,13 @@ const CreateCountdown = () => {
 	}, [link]);
 
 	return (
-		<div className='max-w-7xl w-full mx-auto my-16 px-4'>
-			<div className='flex items-start gap-12 flex-row-inverse max-md:flex-col-reverse'>
-				<div className='w-full max-w-sm mx-auto overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl shadow-lg max-md:max-w-full'>
-					<h2 className='p-6 text-2xl text-white font-bold'>
+		<div className='h-[90vh] w-full max-w-7xl flex gap-4'>
+				<div className='max-w-sm mx-auto overflow-hidden border shadow-lg w-80 bg-white/5 backdrop-blur-sm border-white/10 rounded-2xl max-md:max-w-full'>
+					<div className='p-6 border-b border-white/10'>
+					<h2 className='text-2xl font-bold text-white'>
 						{t('createTimer')}
 					</h2>
+					</div>
 					<form className='grid gap-3 mx-6 my-6'>
 						<Tab
 							pages={[
@@ -175,14 +176,14 @@ const CreateCountdown = () => {
 					</form>
 				</div>
 				<div className='flex-1 w-full md:w-auto'>
-					<div className='relative p-5 overflow-hidden font-mono text-sm text-slate-400 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl shadow-lg pr-14 mb-8'>
+					<div className='relative p-5 mb-8 overflow-hidden font-mono text-sm border shadow-lg text-slate-400 bg-white/5 backdrop-blur-sm border-white/10 rounded-2xl pr-14'>
 						<span>{link}</span>
 						<span className={copied ? 'px-1 text-green-400' : 'hidden'}>
 							{t('copied')}
 						</span>
 						<button
 							type='button'
-							className='absolute top-0 bottom-0 right-0 px-3 text-slate-400 hover:text-white bg-white/5 border-l border-white/10 rounded-r-2xl transition-colors'
+							className='absolute top-0 bottom-0 right-0 px-3 transition-colors border-l text-slate-400 hover:text-white bg-white/5 border-white/10 rounded-r-2xl'
 							onClick={() => copy(link)}
 							aria-label={t('copyLink')}
 						>
@@ -200,7 +201,7 @@ const CreateCountdown = () => {
 							</svg>
 						</button>
 					</div>
-					<div className='flex flex-col flex-1 p-2 bg-white/5 backdrop-blur-sm border border-white/10 aspect-video rounded-2xl shadow-lg'>
+					<div className='flex flex-col flex-1 p-2 border shadow-lg bg-white/5 backdrop-blur-sm border-white/10 aspect-video rounded-2xl'>
 						<div className='flex h-4 gap-2 pb-2'>
 							<span className='h-full rounded-full bg-[#ff3b30] aspect-square'></span>
 							<span className='h-full rounded-full bg-[#ffcc00] aspect-square'></span>
@@ -209,7 +210,6 @@ const CreateCountdown = () => {
 						<iframe className='flex-1 w-full rounded-b-lg' src={debouncedLink}></iframe>
 					</div>
 				</div>
-			</div>
 		</div>
 	);
 };

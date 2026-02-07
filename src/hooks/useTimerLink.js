@@ -41,9 +41,8 @@ const useTimerLink = (baseurl = '') => {
 		if (data.params.lang && data.params.lang !== 'en') {
 			query.push(`lang=${encodeURIComponent(data.params.lang)}`);
 		}
-		if (data.params.theme && data.params.theme !== 'dark') {
-			query.push(`theme=${encodeURIComponent(data.params.theme)}`);
-		}
+		const theme = data.params.theme || 'dark';
+		query.push(`theme=${encodeURIComponent(theme)}`);
 		if (data.params.fontSize && data.params.fontSize !== '24') {
 			query.push(`fontsize=${encodeURIComponent(data.params.fontSize)}`);
 		}

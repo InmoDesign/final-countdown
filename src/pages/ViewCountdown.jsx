@@ -50,7 +50,7 @@ const ViewCountdown = () => {
 		fontSize: searchParams.has('fontsize')
 			? parseInt(searchParams.get('fontsize'))
 			: null,
-		theme: themes[searchParams.get('theme')] || themes.light,
+		theme: themes[searchParams.get('theme')] || themes.dark,
 		msg: searchParams.get('msg')
 	};
 

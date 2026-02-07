@@ -3,7 +3,7 @@ import sanitize from '../helpers/sanitize';
 import themes from '../themes';
 
 const PrintCountdown = ({
-	theme = themes.light,
+	theme = themes.dark,
 	fontSize,
 	msg,
 	days,
