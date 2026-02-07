@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 html {
-	background-color: #f9fafb;
+	background-color: #0f172a;
 }
 
 input[type='number']::-webkit-inner-spin-button,
@@ -17,11 +17,62 @@ input[type='number'] {
 	-moz-appearance: textfield;
 }
 
+input[type='date'],
+input[type='time'] {
+	color-scheme: dark;
+}
+
+select option {
+	background-color: #1e293b;
+	color: #ffffff;
+}
+
+.custom-scroll {
+	--sb-track-color: #0f172a;
+	--sb-thumb-color: #334155;
+	--sb-size: 15px;
+}
+
+.custom-scroll::-webkit-scrollbar {
+	width: var(--sb-size);
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+	background: var(--sb-track-color);
+	border-radius: 23px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+	background: var(--sb-thumb-color);
+	border-radius: 23px;
+	border: 4px solid #0f172a;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+	.custom-scroll {
+		scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+.animate-fadeIn {
+	animation: fadeIn 0.3s ease-out;
+}
+
 @layer components {
 	.tab-button {
-		@apply py-2 px-4 bg-gray-300 text-gray-800 rounded-t-md;
+		@apply p-2 rounded-lg text-sm font-medium bg-white/5 text-slate-400 hover:bg-white/10 border border-white/10 transition-all;
 	}
 	.selected {
-		@apply bg-gray-800 text-white;
+		@apply bg-purple-600 text-white shadow-lg border-transparent;
 	}
 }

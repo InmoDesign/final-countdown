@@ -12,7 +12,7 @@ const ToggleContent = ({ data }) => {
 					onClick={() => setShow(old => !old)}
 					aria-expanded={show}
 					aria-controls={contentId}
-					className='py-1 px-2 text-sm bg-gray-300 text-gray-800 rounded-md'
+					className='p-2 text-sm font-medium bg-white/5 text-slate-400 hover:bg-white/10 border border-white/10 rounded-lg transition-all'
 				>
 					{data.label}
 				</button>

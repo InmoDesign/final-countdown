@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ClipboardIcon } from '@heroicons/react/24/outline';
 import FormField from '../components/FormField';
 import InputSelector from '../components/InputSelector';
 import Tab from '../components/Tab';
@@ -33,8 +32,8 @@ const CreateCountdown = () => {
 	return (
 		<div className='max-w-7xl w-full mx-auto my-16 px-4'>
 			<div className='flex items-start gap-12 flex-row-inverse max-md:flex-col-reverse'>
-				<div className='w-full max-w-sm mx-auto overflow-hidden bg-white border rounded-md max-md:max-w-full'>
-					<h2 className='p-6 text-2xl border-b text-emerald-500'>
+				<div className='w-full max-w-sm mx-auto overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl shadow-lg max-md:max-w-full'>
+					<h2 className='p-6 text-2xl text-white font-bold'>
 						{t('createTimer')}
 					</h2>
 					<form className='grid gap-3 mx-6 my-6'>
@@ -67,7 +66,7 @@ const CreateCountdown = () => {
 									title: t('advanced'),
 									content: (
 										<>
-											<p className='mb-4'>
+											<p className='mb-4 text-sm text-slate-400'>
 												{t('advancedHelp')}
 											</p>
 											<FormField
@@ -176,27 +175,38 @@ const CreateCountdown = () => {
 					</form>
 				</div>
 				<div className='flex-1 w-full md:w-auto'>
-					<div className='relative p-5 overflow-hidden font-mono text-sm text-gray-200 bg-gray-800 rounded-md pr-14 mb-8'>
+					<div className='relative p-5 overflow-hidden font-mono text-sm text-slate-400 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl shadow-lg pr-14 mb-8'>
 						<span>{link}</span>
-						<span className={copied ? 'px-1 text-emerald-400' : 'hidden'}>
+						<span className={copied ? 'px-1 text-green-400' : 'hidden'}>
 							{t('copied')}
 						</span>
 						<button
 							type='button'
-							className='absolute top-0 bottom-0 right-0 px-3 text-white bg-emerald-500'
+							className='absolute top-0 bottom-0 right-0 px-3 text-slate-400 hover:text-white bg-white/5 border-l border-white/10 rounded-r-2xl transition-colors'
 							onClick={() => copy(link)}
 							aria-label={t('copyLink')}
 						>
-							<ClipboardIcon className='w-6 h-6' />
+							<svg
+								className='w-6 h-6'
+								fill='none'
+								stroke='currentColor'
+								viewBox='0 0 24 24'
+								strokeWidth={2}
+								strokeLinecap='round'
+								strokeLinejoin='round'
+							>
+								<rect x='9' y='9' width='13' height='13' rx='2' ry='2' />
+								<path d='M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1' />
+							</svg>
 						</button>
 					</div>
-					<div className='flex flex-col flex-1 p-2 bg-gray-800 aspect-video rounded-md'>
+					<div className='flex flex-col flex-1 p-2 bg-white/5 backdrop-blur-sm border border-white/10 aspect-video rounded-2xl shadow-lg'>
 						<div className='flex h-4 gap-2 pb-2'>
 							<span className='h-full rounded-full bg-[#ff3b30] aspect-square'></span>
 							<span className='h-full rounded-full bg-[#ffcc00] aspect-square'></span>
 							<span className='h-full rounded-full bg-[#4cd964] aspect-square'></span>
 						</div>
-						<iframe className='flex-1 w-full' src={debouncedLink}></iframe>
+						<iframe className='flex-1 w-full rounded-b-lg' src={debouncedLink}></iframe>
 					</div>
 				</div>
 			</div>

@@ -1,6 +1,6 @@
 const FormField = ({ label, name, type, variant = 'input', subfix, onChange, ...props }) => {
 	const inputClassName =
-		'w-full p-2 border border-gray-300 shadow-sm rounded-md appearance-text placeholder:hidden';
+		'w-full px-2 py-1 text-sm text-white border border-white/20 bg-white/5 rounded-lg placeholder-slate-500 focus:border-purple-500 focus:outline-none transition-all appearance-text placeholder:hidden';
 
 	const renderInput = () => {
 		switch (variant) {
@@ -51,13 +51,13 @@ const FormField = ({ label, name, type, variant = 'input', subfix, onChange, ...
 
 	return (
 		<div className='grid md:grid-cols-2 items-center gap-2 py-1'>
-			<label className='text-sm text-gray-400' htmlFor={name}>
+			<label className='text-xs text-slate-300 font-semibold' htmlFor={name}>
 				{label}
 			</label>
 			<div className='relative'>
 				{renderInput()}
 				{subfix && (
-					<div className='absolute top-1/4 right-2 text-gray-400 pointer-events-none'>
+					<div className='absolute top-1/4 right-2 text-slate-500 pointer-events-none'>
 						{subfix}
 					</div>
 				)}

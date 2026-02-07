@@ -1,15 +1,15 @@
 const themes = {
 	dark: {
-		bg: '#1F2937',
-		text: '#E4E7EB',
-		accent: '#10B981',
-		muted: '#6B7280'
+		bg: '#0f172a',
+		text: '#FFFFFF',
+		accent: '#a855f7',
+		muted: '#94A3B8'
 	},
 	light: {
 		bg: '#F9FAFB',
-		text: '#1F2937',
-		accent: '#10B981',
-		muted: '#9CA3AF'
+		text: '#334155',
+		accent: '#9333ea',
+		muted: '#94A3B8'
 	}
 };
 

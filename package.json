@@ -1,6 +1,9 @@
 {
 	"name": "project-name",
 	"version": "0.0.1",
+	"engines": {
+		"node": ">=18.0.0"
+	},
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
@@ -11,7 +14,7 @@
 	"dependencies": {
 		"@headlessui/react": "^1.6.6",
 		"@heroicons/react": "^2.0.10",
-		"dompurify": "^2.4.0",
+		"dompurify": "^3.3.1",
 		"i18next": "^21.9.1",
 		"react": "17.0.2",
 		"react-datetime": "^3.2.0",
@@ -33,6 +36,6 @@
 		"postcss": "^8.4.23",
 		"prettier": "2.5.1",
 		"tailwindcss": "^3.3.2",
-		"vite": "^2.9.15"
+		"vite": "^7.3.1"
 	}
 }

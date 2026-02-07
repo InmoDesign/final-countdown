@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
 	return (
-		<header className='bg-gray-800 shadow-md'>
+		<header className='bg-white/5 backdrop-blur-sm border-b border-white/10'>
 			<div className='flex items-center justify-between px-6 py-6 m-auto max-w-7xl'>
-				<Link to='/' targer='_blank' className='text-emerald-500'>
+				<Link to='/' target='_blank' className='text-white'>
 					<svg
-						fill='#0FB981'
+						fill='currentColor'
 						height='24px'
 						width='24px'
 						version='1.1'
@@ -37,10 +37,11 @@ const Header = () => {
 							</g>
 						</g>
 					</svg>{' '}
-					Timer Frame
+					<span className='text-white'>Timer</span>
+					<span className='text-purple-500'>Frame</span>
 				</Link>
-				<nav className='flex gap-4 text-gray-200'>
-					<Link to='/' targer='_blank'>
+				<nav className='flex gap-4 text-slate-400'>
+					<Link to='/' target='_blank' className='hover:text-purple-300 transition-colors'>
 						Home
 					</Link>
 				</nav>

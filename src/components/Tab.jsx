@@ -23,7 +23,7 @@ const Tab = ({ pages }) => {
 
 	return (
 		<div className='w-full'>
-			<div className='flex items-center border-b' role='tablist' onKeyDown={handleKeyDown}>
+			<div className='flex items-center gap-2' role='tablist' onKeyDown={handleKeyDown}>
 				{pages.map((page, index) => (
 					<button
 						type='button'
