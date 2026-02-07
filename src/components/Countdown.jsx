@@ -4,10 +4,6 @@ import PrintCountdown from './PrintCountdown';
 const Countdown = ({ params, date }) => {
 	const timeLeft = useCountdown(date);
 
-	return (
-		<div>
-			<PrintCountdown {...params} {...timeLeft} />
-		</div>
-	);
+	return <PrintCountdown {...params} {...timeLeft} />;
 };
 export default Countdown;

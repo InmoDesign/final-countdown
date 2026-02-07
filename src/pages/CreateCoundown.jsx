@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ClipboardIcon } from '@heroicons/react/24/outline';
 import FormField from '../components/FormField';
 import InputSelector from '../components/InputSelector';
@@ -6,6 +8,7 @@ import useClipboard from '../hooks/useClipboard';
 import useTimerLink from '../hooks/useTimerLink';
 
 const CreateCountdown = () => {
+	const { t } = useTranslation();
 	const [{ link, params }, inputChange, inputTimeChange] = useTimerLink(
 		`${import.meta.env.VITE_URL}/view/`
 	);
@@ -20,30 +23,37 @@ const CreateCountdown = () => {
 
 	const { copied, copy } = useClipboard();
 
+	const [debouncedLink, setDebouncedLink] = useState(link);
+
+	useEffect(() => {
+		const timer = setTimeout(() => setDebouncedLink(link), 500);
+		return () => clearTimeout(timer);
+	}, [link]);
+
 	return (
 		<div className='max-w-7xl w-full mx-auto my-16 px-4'>
 			<div className='flex items-start gap-12 flex-row-inverse max-md:flex-col-reverse'>
 				<div className='w-full max-w-sm mx-auto overflow-hidden bg-white border rounded-md max-md:max-w-full'>
 					<h2 className='p-6 text-2xl border-b text-emerald-500'>
-						Create your timer
+						{t('createTimer')}
 					</h2>
 					<form className='grid gap-3 mx-6 my-6'>
 						<Tab
 							pages={[
 								{
 									id: 'time',
-									title: 'Time',
+									title: t('time'),
 									content: (
 										<>
 											<FormField
-												label='Date'
+												label={t('date')}
 												name='date'
 												variant='date'
 												value={date}
 												onChange={inputTimeChange}
 											/>
 											<FormField
-												label='Time'
+												label={t('time')}
 												name='time'
 												variant='time'
 												value={time}
@@ -54,13 +64,11 @@ const CreateCountdown = () => {
 								},
 								{
 									id: 'advanced',
-									title: 'Advanced',
+									title: t('advanced'),
 									content: (
 										<>
 											<p className='mb-4'>
-												Define the time and date of repetition. For example:
-												Every 14th hour of May, just define the 14th hour and
-												the month 5.
+												{t('advancedHelp')}
 											</p>
 											<FormField
 												label='Second'
@@ -120,11 +128,11 @@ const CreateCountdown = () => {
 								},
 								{
 									id: 'customization',
-									title: 'Customization',
+									title: t('customization'),
 									content: (
 										<>
 											<InputSelector
-												label='Language'
+												label={t('language')}
 												name='lang'
 												onChange={inputChange}
 												value={lang}
@@ -134,17 +142,17 @@ const CreateCountdown = () => {
 												]}
 											/>
 											<InputSelector
-												label='Theme'
+												label={t('theme')}
 												name='theme'
 												value={theme}
 												onChange={inputChange}
 												options={[
-													{ label: 'Light', value: 'light' },
-													{ label: 'Dark', value: 'dark' }
+													{ label: t('light'), value: 'light' },
+													{ label: t('dark'), value: 'dark' }
 												]}
 											/>
 											<FormField
-												label='Font size'
+												label={t('fontSize')}
 												name='fontSize'
 												type='number'
 												subfix='px'
@@ -154,7 +162,7 @@ const CreateCountdown = () => {
 												onChange={inputChange}
 											/>
 											<FormField
-												label='Final message'
+												label={t('finalMessage')}
 												name='msg'
 												variant='textarea'
 												value={msg}
@@ -171,12 +179,13 @@ const CreateCountdown = () => {
 					<div className='relative p-5 overflow-hidden font-mono text-sm text-gray-200 bg-gray-800 rounded-md pr-14 mb-8'>
 						<span>{link}</span>
 						<span className={copied ? 'px-1 text-emerald-400' : 'hidden'}>
-							Copied!
+							{t('copied')}
 						</span>
 						<button
 							type='button'
 							className='absolute top-0 bottom-0 right-0 px-3 text-white bg-emerald-500'
 							onClick={() => copy(link)}
+							aria-label={t('copyLink')}
 						>
 							<ClipboardIcon className='w-6 h-6' />
 						</button>
@@ -187,7 +196,7 @@ const CreateCountdown = () => {
 							<span className='h-full rounded-full bg-[#ffcc00] aspect-square'></span>
 							<span className='h-full rounded-full bg-[#4cd964] aspect-square'></span>
 						</div>
-						<iframe className='flex-1 w-full' src={link}></iframe>
+						<iframe className='flex-1 w-full' src={debouncedLink}></iframe>
 					</div>
 				</div>
 			</div>

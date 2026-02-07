@@ -5,11 +5,11 @@ const useCountdown = targetDate => {
 	const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(targetDate));
 
 	useEffect(() => {
-		const timer = setTimeout(() => {
+		const timer = setInterval(() => {
 			setTimeLeft(calculateTimeLeft(targetDate));
 		}, 1000);
-		return () => clearTimeout(timer);
-	}, [targetDate, timeLeft]);
+		return () => clearInterval(timer);
+	}, [targetDate]);
 
 	return timeLeft;
 };

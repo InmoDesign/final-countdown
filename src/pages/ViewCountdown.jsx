@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Countdown from '../components/Countdown';
 import calculateTime from '../helpers/calculateTime';
@@ -7,11 +8,11 @@ import themes from '../themes';
 const ViewCountdown = () => {
 	const [searchParams] = useSearchParams();
 
-	const getUserDate = () => {
+	const userDate = useMemo(() => {
 		const time = getTime(searchParams.get('time'));
 		const date = getDate(searchParams.get('date'));
 
-		const response = {
+		return {
 			year: date.year
 				? parseInt(date.year)
 				: searchParams.has('year')
@@ -43,9 +44,7 @@ const ViewCountdown = () => {
 				? parseInt(searchParams.get('second'))
 				: null
 		};
-
-		return response;
-	};
+	}, [searchParams]);
 
 	const params = {
 		fontSize: searchParams.has('fontsize')
@@ -55,9 +54,13 @@ const ViewCountdown = () => {
 		msg: searchParams.get('msg')
 	};
 
-	const date = calculateTime(getUserDate());
+	const date = calculateTime(userDate);
 
-	return <main>{<Countdown params={params} date={date} />}</main>;
+	return (
+		<main>
+			<Countdown params={params} date={date} />
+		</main>
+	);
 };
 
 export default ViewCountdown;
